@@ -8,7 +8,7 @@ import { TwilioModule } from './modules/twilio/twilio.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'config.env',
+      envFilePath: process.env.NODE_ENV === 'production' ? undefined : 'config.env',
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
